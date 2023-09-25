@@ -1,6 +1,5 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.domain.item.DeliveryStatus;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.tomcat.jni.Address;
