@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain.repository;
 
 import jpabook.jpashop.domain.item.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,8 +10,11 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
-    @PersistenceContext
+//    @PersistenceContext
+//          OR
+//    @Autowired -> 스프링 부트가 그냥 지원해준다 (원래는 안됨)
     private EntityManager em;
 
     public void save(Member member) {
