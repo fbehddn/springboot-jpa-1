@@ -15,7 +15,7 @@ public class MemberRepository {
 //    @PersistenceContext
 //          OR
 //    @Autowired -> 스프링 부트가 그냥 지원해준다 (원래는 안됨)
-    private EntityManager em;
+    private final EntityManager em;
 
     public void save(Member member) {
         em.persist(member);
