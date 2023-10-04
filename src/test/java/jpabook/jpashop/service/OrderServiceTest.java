@@ -55,10 +55,19 @@ public class OrderServiceTest {
     @Test
     public void 주문취소() throws Exception {
         //given
+        Member member = createMember();
+        Item item = createBook("시골 JPA", 10000, 10);
+
+        int orderCount = 2;
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
 
         //when
+        orderService.cancelOrder(orderId);
 
         //then
+        Order getOrder = orderRepository.findOne(orderId);
+        assertEquals("주문 취소시 상태는 CANCEL 이다.", OrderStatus.CANCEL, getOrder.getStatus());
+        assertEquals("주문 취소된 상품은 재고가 복구되어야 한다", 10, item.getStockQuantity());
     }
 
     @Test(expected = NotEnoughStockException.class)
